@@ -1,0 +1,12 @@
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: shooter
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: shooter
+  source:
+    repoURL: https://github.com/kylape/pac-demo.git
+    path: shooter

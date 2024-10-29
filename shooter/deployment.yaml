@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: test-shooter
+  name: test-shooter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-shooter
+  template:
+    metadata:
+      labels:
+        app: test-shooter
+    spec:
+      containers:
+      - image: quay.io/klape/test-shooter:latest
+        imagePullPolicy: IfNotPresent
+        name: test-shooter

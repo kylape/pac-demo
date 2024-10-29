@@ -1,0 +1,15 @@
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: argocd
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: argocd
+  source:
+    repoURL: https://github.com/kylape/pac-demo.git
+    path: argocd
+  syncPolicy:
+    automated:
+      selfHeal: true

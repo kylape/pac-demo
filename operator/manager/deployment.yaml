@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  generation: 1
+  labels:
+    app: stackrox-operator
+  name: stackrox-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stackrox-operator
+  template:
+    metadata:
+      labels:
+        app: stackrox-operator
+    spec:
+      containers:
+      - image: quay.io/klape/stackrox-operator:4.6.0-847-g801913bf67-dirty
+        imagePullPolicy: IfNotPresent
+        name: stackrox-operator
+      serviceAccountName: controller-manager

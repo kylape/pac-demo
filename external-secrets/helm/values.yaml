@@ -32,7 +32,7 @@ image:
   flavour: ""
 
 # -- If set, install and upgrade CRDs through helm chart.
-installCRDs: true
+installCRDs: false
 
 crds:
   # -- If true, create CRDs for Cluster External Secret.

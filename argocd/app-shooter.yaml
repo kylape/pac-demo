@@ -10,3 +10,8 @@ spec:
   source:
     repoURL: https://github.com/kylape/pac-demo.git
     path: shooter
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

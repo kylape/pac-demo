@@ -9,7 +9,7 @@ spec:
     namespace: stackrox
   source:
     repoURL: https://github.com/kylape/pac-demo.git
-    path: stackrox-policies
+    path: stackrox/policies
   syncPolicy:
     automated:
       selfHeal: true

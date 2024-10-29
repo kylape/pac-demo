@@ -1,0 +1,17 @@
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: operator-manager
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: stackrox-operator
+  source:
+    repoURL: https://github.com/kylape/pac-demo.git
+    path: operator/manager
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

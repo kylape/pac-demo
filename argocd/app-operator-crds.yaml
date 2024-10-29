@@ -1,0 +1,14 @@
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: operator-crds
+spec:
+  project: default
+  destination:
+    name: in-cluster
+  source:
+    repoURL: https://github.com/kylape/pac-demo.git
+    path: operator/crds
+  syncPolicy:
+    automated:
+      selfHeal: true

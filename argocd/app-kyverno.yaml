@@ -6,10 +6,10 @@ spec:
   project: default
   destination:
     name: in-cluster
-    namespace: kyverno/install
+    namespace: kyverno
   source:
     repoURL: https://github.com/kylape/pac-demo.git
-    path: kyverno
+    path: kyverno/install
   syncPolicy:
     automated:
       selfHeal: true

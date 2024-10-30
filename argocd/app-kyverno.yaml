@@ -6,7 +6,7 @@ spec:
   project: default
   destination:
     name: in-cluster
-    namespace: kyverno
+    namespace: kyverno/install
   source:
     repoURL: https://github.com/kylape/pac-demo.git
     path: kyverno

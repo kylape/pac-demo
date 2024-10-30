@@ -1,0 +1,21 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: stackrox-policy-as-code-enabled
+spec:
+  validationFailureAction: Audit
+  rules:
+    - name: stackrox-policy-as-code-enabled
+      match:
+        any:
+          - resources:
+              kinds:
+                - Centrals
+              namespaces:
+                - stackrox
+      validate:
+        message: "policy-as-code is not enabled"
+        pattern:
+          spec:
+            configAsCode:
+              configAsCodeComponent: Enabled

@@ -47,8 +47,8 @@ spec:
         limits:
           cpu: 2000m
           memory: 4Gi
-configAsCode:
-  configAsCodeComponent: Disabled
+  configAsCode:
+    configAsCodeComponent: Disabled
 ---
 apiVersion: v1
 kind: Secret

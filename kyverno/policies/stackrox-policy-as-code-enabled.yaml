@@ -6,7 +6,7 @@ spec:
   validationFailureAction: Audit
   rules:
     - name: stackrox-policy-as-code-enabled
-      skipBackgroundChecks: false
+      skipBackgroundRequests: false
       match:
         any:
           - resources:

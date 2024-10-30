@@ -10,7 +10,7 @@ spec:
         any:
           - resources:
               kinds:
-                - Centrals
+                - Central
               namespaces:
                 - stackrox
       validate:

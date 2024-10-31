@@ -12,8 +12,6 @@ spec:
           - resources:
               kinds:
                 - Central
-              namespaces:
-                - stackrox
       validate:
         message: "policy-as-code is not enabled"
         pattern:

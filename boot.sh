@@ -22,7 +22,7 @@ kubectl -n stackrox-operator wait --for=condition=Available deploy/stackrox-oper
 echo Waiting for Central to deploy...
 kubectl -n argocd    wait --for=jsonpath='{.status.health.status}'=Healthy app/stackrox-central
 kubectl -n stackrox  wait --for=condition=Deployed=True central/stackrox-central-services
-kubectl -n stackrox  wait --for=condition=Available deploy/central-db --timeout=120s
+kubectl -n stackrox  wait --for=condition=Available deploy/central-db --timeout=600s
 kubectl -n stackrox  wait --for=condition=Available deploy/central --timeout=120s
 kubectl -n stackrox  wait --for=condition=Available deploy/config-controller --timeout=120s
 

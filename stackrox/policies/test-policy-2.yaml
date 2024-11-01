@@ -1,0 +1,24 @@
+apiVersion: config.stackrox.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: test-policy-2
+spec:
+  policyName: This is yet another test policy
+  description: |
+    This is another test policy that shows how to manage a policy
+    using the new Policy as Code feature in StackRox.
+  categories:
+    - Cryptocurrency Mining
+  lifecycleStages:
+    - DEPLOY
+  scope:
+    - namespace: shooter
+  severity: MEDIUM_SEVERITY
+  policySections:
+  - sectionName: Policy Section 1
+    policyGroups:
+    - fieldName: Days Since CVE Was First Discovered In Image
+      booleanOperator: OR
+      negate: false
+      values:
+        - value: "3"

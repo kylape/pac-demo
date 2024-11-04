@@ -21,4 +21,4 @@ spec:
       booleanOperator: OR
       negate: false
       values:
-        - value: "abc"
+        - value: "3"

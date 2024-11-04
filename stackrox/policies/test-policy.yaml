@@ -14,11 +14,11 @@ spec:
   scope:
     - namespace: shooter
   severity: MEDIUM_SEVERITY
-  policySections:
+  policySection:
   - sectionName: Policy Section 1
     policyGroups:
     - fieldName: Days Since CVE Was First Discovered In Image
       booleanOperator: OR
       negate: false
       values:
-        - value: "5"
+        - value: "abc"

@@ -7,22 +7,22 @@ metadata:
   name: argocd-cm
 data:
   resource.customizations: |
-    # platform.stackrox.io/Central:
-    #   health.lua: |
-    #     hs = {}
-    #     if obj.status ~= nil and obj.status.conditions ~= nil then
-    #       if obj.status.conditions then
-    #         hs.status = "Healthy"
-    #       else
-    #         hs.status = "Degraded"
-    #       end
-    #       hs.message = obj.status.message
-    #       return hs
-    #     end
+    platform.stackrox.io/Central:
+      health.lua: |
+        hs = {}
+        if obj.status ~= nil and obj.status.conditions ~= nil then
+          if obj.status.conditions then
+            hs.status = "Healthy"
+          else
+            hs.status = "Degraded"
+          end
+          hs.message = obj.status.message
+          return hs
+        end
 
-    #     hs.status = "Progressing"
-    #     hs.message = "Waiting for reconciliation"
-    #     return hs
+        hs.status = "Progressing"
+        hs.message = "Waiting for reconciliation"
+        return hs
     config.stackrox.io/SecurityPolicy:
       health.lua: |
         hs = {}

@@ -1,0 +1,18 @@
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: kyverno-crds
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: kyverno
+  source:
+    repoURL: https://github.com/kylape/pac-demo.git
+    path: kyverno/crds
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - Replace=true

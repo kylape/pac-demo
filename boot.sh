@@ -5,6 +5,7 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 
 echo Waiting for Argo CD to complete installation...
 kubectl -n argocd wait --for=condition=Available deploy/argocd-server --timeout=120s
+kubectl -n argocd wait --for=condition=Available deploy/repo-server --timeout=120s
 
 kubectl wait --for=condition=Established crd/applications.argoproj.io --timeout=1s
 kubectl -n argocd create -f argocd.yaml
@@ -21,7 +22,7 @@ kubectl -n stackrox-operator wait --for=condition=Available deploy/stackrox-oper
 
 echo Waiting for Central to deploy...
 kubectl -n argocd    wait --for=jsonpath='{.status.health.status}'=Healthy app/stackrox-central
-kubectl -n stackrox  wait --for=condition=Deployed=True central/stackrox-central-services
+kubectl -n stackrox  wait --for=condition=Deployed=True central/stackrox-central-services --timeout=120s
 kubectl -n stackrox  wait --for=condition=Available deploy/central-db --timeout=600s
 kubectl -n stackrox  wait --for=condition=Available deploy/central --timeout=120s
 kubectl -n stackrox  wait --for=condition=Available deploy/config-controller --timeout=120s

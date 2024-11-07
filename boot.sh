@@ -1,14 +1,14 @@
 #!/bin/bash
 
 kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl apply -n argocd -f argocd/install
 
 echo Waiting for Argo CD to complete installation...
 kubectl -n argocd wait --for=condition=Available deploy/argocd-server --timeout=120s
 kubectl -n argocd wait --for=condition=Available deploy/repo-server --timeout=120s
 
 kubectl wait --for=condition=Established crd/applications.argoproj.io --timeout=1s
-kubectl -n argocd create -f argocd.yaml
+kubectl -n argocd create -f argocd/argocd.yaml
 
 echo Waiting for Argo CD applications to be applied...
 sleep 5

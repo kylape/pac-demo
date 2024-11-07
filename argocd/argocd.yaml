@@ -1,7 +1,7 @@
 kind: Application
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: argocd
+  name: argocd-apps
 spec:
   project: default
   destination:
@@ -9,7 +9,7 @@ spec:
     namespace: argocd
   source:
     repoURL: https://github.com/kylape/pac-demo.git
-    path: argocd
+    path: argocd/apps
   syncPolicy:
     automated:
       selfHeal: true

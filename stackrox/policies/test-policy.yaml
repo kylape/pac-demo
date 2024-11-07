@@ -14,7 +14,7 @@ spec:
   scope:
     - namespace: shooter
   severity: MEDIUM_SEVERITY
-  policySection:
+  policySections:
   - sectionName: Policy Section 1
     policyGroups:
     - fieldName: Days Since CVE Was First Discovered In Image

@@ -5,9 +5,9 @@ metadata:
 spec:
   # Resource settings should be in sync with /deploy/common/local-dev-values.yaml
   central:
-    # exposure:
-      # route:
-      #   enabled: true
+    exposure:
+      route:
+        enabled: true
     adminPasswordSecret:
       name: admin-pass
     resources:

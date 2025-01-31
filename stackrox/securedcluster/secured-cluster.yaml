@@ -1,0 +1,33 @@
+apiVersion: platform.stackrox.io/v1alpha1
+kind: SecuredCluster
+metadata:
+  name: stackrox-secured-cluster-services
+spec:
+  centralEndpoint: central:443
+  clusterName: testing-cluster
+  admissionControl:
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 10m
+  sensor:
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 10m
+  perNode:
+    collector:
+      resources:
+        requests:
+          memory: 100Mi
+          cpu: 10m
+    compliance:
+      resources:
+        requests:
+          memory: 100Mi
+          cpu: 10m
+    nodeInventory:
+      resources:
+        requests:
+          memory: 100Mi
+          cpu: 10m

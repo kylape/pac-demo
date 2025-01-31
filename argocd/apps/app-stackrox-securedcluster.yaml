@@ -1,0 +1,17 @@
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: stackrox-secured-cluster
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: stackrox
+  source:
+    repoURL: https://github.com/kylape/pac-demo.git
+    path: stackrox/securedcluster
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

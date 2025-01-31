@@ -1,15 +1,15 @@
 kind: Application
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: shooter
+  name: fetcher
 spec:
   project: default
   destination:
     name: in-cluster
-    namespace: shooter
+    namespace: fetcher
   source:
     repoURL: https://github.com/kylape/pac-demo.git
-    path: shooter
+    path: fetcher
   syncPolicy:
     automated:
       selfHeal: true

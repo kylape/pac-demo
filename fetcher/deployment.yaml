@@ -2,19 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: test-shooter
-  name: test-shooter
+    app: test-fetcher
+  name: test-fetcher
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: test-shooter
+      app: test-fetcher
   template:
     metadata:
       labels:
-        app: test-shooter
+        app: test-fetcher
     spec:
       containers:
-      - image: quay.io/klape/test-shooter:latest
+      - image: quay.io/klape/test-fetcher:latest
         imagePullPolicy: IfNotPresent
-        name: test-shooter
+        name: test-fetcher

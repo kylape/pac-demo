@@ -5,7 +5,12 @@ metadata:
 spec:
   centralEndpoint: central:443
   clusterName: testing-cluster
+  customize:
+    envVars:
+    - name: LOGLEVEL
+      value: Debug
   admissionControl:
+    contactImageScanners: ScanIfMissing
     resources:
       requests:
         memory: 100Mi

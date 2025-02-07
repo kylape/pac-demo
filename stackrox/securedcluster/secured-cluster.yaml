@@ -10,7 +10,7 @@ spec:
     - name: LOGLEVEL
       value: Debug
   admissionControl:
-    contactImageScanners: ScanIfMissing
+    # contactImageScanners: ScanIfMissing
     resources:
       requests:
         memory: 100Mi

@@ -1,0 +1,17 @@
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: tekton
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: tekton-pipelines
+  source:
+    repoURL: https://github.com/kylape/pac-demo.git
+    path: tekton
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

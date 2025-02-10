@@ -1,0 +1,42 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: clone-build-push
+spec:
+  description: | 
+    This pipeline clones a git repo, builds a Docker image with go build and
+    pushes it to a registry
+  params:
+  - name: repo-url
+    type: string
+  - name: revision
+    type: string
+  workspaces:
+  - name: shared-data
+  tasks:
+  - name: fetch-source
+    taskRef:
+      name: git-clone
+    workspaces:
+    - name: output
+      workspace: shared-data
+    params:
+    - name: url
+      value: $(params.repo-url)
+    - name: revision
+      value: $(params.revision)
+  - name: build-central
+    runAfter:
+    - fetch-source
+    taskRef:
+      name: golang-build
+    workspaces:
+    - name: source
+      workspace: shared-data
+    params:
+    - name: package
+      value: github.com/stackrox/stackrox
+    - name: packages
+      value: ./central
+    - name: flags
+      value: "-v -o ./central-binary"

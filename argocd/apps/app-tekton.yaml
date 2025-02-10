@@ -9,7 +9,7 @@ spec:
     namespace: tekton-pipelines
   source:
     repoURL: https://github.com/kylape/pac-demo.git
-    path: tekton
+    path: tekton/install
   syncPolicy:
     automated:
       selfHeal: true

@@ -18,6 +18,8 @@ spec:
         memory: 4Gi
         cpu: 1
     db:
+      passwordSecret:
+        name: external-db-password
       resources:
         requests:
           memory: 1Gi

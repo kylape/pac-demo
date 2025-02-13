@@ -4,6 +4,21 @@ metadata:
   name: stackrox-central-services
 spec:
   # Resource settings should be in sync with /deploy/common/local-dev-values.yaml
+  tls:
+    additionalCAs:
+    - name: db-ca
+      content: |
+        -----BEGIN CERTIFICATE-----
+        MIIBmDCCAT+gAwIBAgIRAN/k4T7+kFSB2knduZTpS+owCgYIKoZIzj0EAwIwLDEQ
+        MA4GA1UECxMHZGVmYXVsdDEYMBYGA1UEAxMPY2x1c3Rlci1leGFtcGxlMB4XDTI1
+        MDIxMzE1NDYzMloXDTI1MDUxNDE1NDYzMlowLDEQMA4GA1UECxMHZGVmYXVsdDEY
+        MBYGA1UEAxMPY2x1c3Rlci1leGFtcGxlMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcD
+        QgAEf7ShjzmBZ998Xc0HiX09ZEI+I2hwKYCUB0/RFvxJI9Avdy1jNspE/h3gh65q
+        lKLNUsJk+zagxcIpr3vOth81SKNCMEAwDgYDVR0PAQH/BAQDAgIEMA8GA1UdEwEB
+        /wQFMAMBAf8wHQYDVR0OBBYEFJqChPJCCWR3odsM7DVnJb59wtxqMAoGCCqGSM49
+        BAMCA0cAMEQCIDfljE9y3yw53Nf1j0NZn/b4jblPj+w7pODCjP2i0LyYAiA0C3sD
+        PPozsvNmB/mmA1gOcscQ4OI7HJSfKOfRSoMzpQ==
+        -----END CERTIFICATE-----
   central:
     # exposure:
     #   route:
@@ -18,6 +33,7 @@ spec:
         memory: 4Gi
         cpu: 1
     db:
+      connectionString: "host=cluster-example-rw.default.svc port=5432 user=app sslmode=verify-full"
       passwordSecret:
         name: external-db-password
       resources:

@@ -33,9 +33,6 @@ spec:
         memory: 4Gi
         cpu: 1
     db:
-      connectionString: "host=cluster-example-rw.default.svc port=5432 user=app sslmode=verify-full"
-      passwordSecret:
-        name: external-db-password
       resources:
         requests:
           memory: 1Gi

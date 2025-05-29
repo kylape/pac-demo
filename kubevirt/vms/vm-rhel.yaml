@@ -1,0 +1,47 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: rhel
+spec:
+  runStrategy: Halted
+  template:
+    metadata:
+      labels:
+        kubevirt.io/size: small
+        kubevirt.io/domain: rhel
+    spec:
+      domain:
+        devices:
+          autoattachVSOCK: true
+          disks:
+            - name: containerdisk
+              disk:
+                bus: virtio
+            - name: cloudinitdisk
+              disk:
+                bus: virtio
+          interfaces:
+          - name: default
+            masquerade: {}
+        resources:
+          requests:
+            memory: 8Gi
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+        - name: containerdisk
+          dataVolume:
+            name: rhel
+        - name: cloudinitdisk
+          cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              users:
+              - default
+              - name: klape
+                sudo: ALL=(ALL) NOPASSWD:ALL
+                ssh_authorized_keys:
+                - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDI3MQuBoWRq+Cad6pu/QurHr4jVYGBY+8LHZ43DeiLGYdOPZRqwKqDZrvizRZkAkPV7afsSxuQ6YpcAEP42YioJTHg2zmIAYY8DelKrdUblWL+lm21sBCK5CsGTSKw3FkHqXk+UMENLis9kMy1XGwfYXqbC5BjyQYc762AgIr/6EdlRDTqUuVNeh2N6CupApGOaKwC0KtlonX9MetiHGxiHXKjtY4mOLPhRMCNsNKf+a1Yyi9BbPLYlLxx++Z85owEuJvniszu5rv+tAulvXvj7dbyKjyJQuZtzzvaafZlvvXGSSwBpazwZHkqZpdGUTc5ObKRnTNVDNq4HxpW0OBX klape@klape.remote.csb
+              ssh_authorized_keys:
+              - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDI3MQuBoWRq+Cad6pu/QurHr4jVYGBY+8LHZ43DeiLGYdOPZRqwKqDZrvizRZkAkPV7afsSxuQ6YpcAEP42YioJTHg2zmIAYY8DelKrdUblWL+lm21sBCK5CsGTSKw3FkHqXk+UMENLis9kMy1XGwfYXqbC5BjyQYc762AgIr/6EdlRDTqUuVNeh2N6CupApGOaKwC0KtlonX9MetiHGxiHXKjtY4mOLPhRMCNsNKf+a1Yyi9BbPLYlLxx++Z85owEuJvniszu5rv+tAulvXvj7dbyKjyJQuZtzzvaafZlvvXGSSwBpazwZHkqZpdGUTc5ObKRnTNVDNq4HxpW0OBX klape@klape.remote.csb

@@ -1,0 +1,12 @@
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: rhel
+spec:
+  source:
+    upload: {}
+  storage:
+    storageClassName: topolvm-provisioner-thin
+    resources:
+      requests:
+        storage: 15Gi
